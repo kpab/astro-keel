@@ -563,56 +563,22 @@ pre code {
   margin-block: calc(var(--baseline) * 1.5);
 }
 
+/* Shiki dual themes: github-light by default, github-dark under data-theme. */
 .astro-code,
 .astro-code span {
-  color: var(--color-text) !important;
-  background-color: var(--color-soft) !important;
+  color: var(--shiki-light);
+  background-color: transparent;
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
 }
 
 :root[data-theme='dark'] .astro-code,
 :root[data-theme='dark'] .astro-code span {
-  color: var(--color-text) !important;
-  background-color: var(--color-soft) !important;
-}
-
-.astro-code span[style*="#F97583"] {
-  color: oklch(0.48 0.16 25) !important;
-}
-
-.astro-code span[style*="#B392F0"] {
-  color: oklch(0.42 0.14 295) !important;
-}
-
-.astro-code span[style*="#79B8FF"] {
-  color: oklch(0.45 0.12 240) !important;
-}
-
-.astro-code span[style*="#FFAB70"] {
-  color: oklch(0.46 0.12 65) !important;
-}
-
-.astro-code span[style*="#E1E4E8"] {
-  color: var(--color-text) !important;
-}
-
-:root[data-theme='dark'] .astro-code span[style*="#F97583"] {
-  color: oklch(0.75 0.13 25) !important;
-}
-
-:root[data-theme='dark'] .astro-code span[style*="#B392F0"] {
-  color: oklch(0.78 0.11 295) !important;
-}
-
-:root[data-theme='dark'] .astro-code span[style*="#79B8FF"] {
-  color: oklch(0.78 0.1 240) !important;
-}
-
-:root[data-theme='dark'] .astro-code span[style*="#FFAB70"] {
-  color: oklch(0.8 0.11 65) !important;
-}
-
-:root[data-theme='dark'] .astro-code span[style*="#E1E4E8"] {
-  color: var(--color-text) !important;
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
 }
 
 .section-heading {
