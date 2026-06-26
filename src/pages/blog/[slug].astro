@@ -19,7 +19,12 @@ const formatDate = (date: Date) =>
   }).format(date);
 ---
 
-<BaseLayout title={`${entry.data.title} | Astro Keel`} description={entry.data.description}>
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  ogType="article"
+  image={entry.data.heroImage?.src}
+>
   <article>
     <header class="page-head section article-head">
       <p class="eyebrow">Blog</p>
