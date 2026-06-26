@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('en', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+---
+
+<BaseLayout title={`${entry.data.title} | Astro Keel`} description={entry.data.description}>
+  <article>
+    <header class="page-head section article-head">
+      <p class="eyebrow">Blog</p>
+      <h1>{entry.data.title}</h1>
+      <p class="lead">{entry.data.description}</p>
+      <div class="entry-meta">
+        <time datetime={entry.data.publishDate.toISOString()}>{formatDate(entry.data.publishDate)}</time>
+        <span>{entry.data.tags.join(' / ')}</span>
+      </div>
+      {
+        entry.data.heroImage && (
+          <Image
+            class="article-image"
+            src={entry.data.heroImage}
+            alt=""
+            widths={[720, 1040, 1400]}
+            sizes="(min-width: 900px) 72rem, 100vw"
+          />
+        )
+      }
+    </header>
+
+    <div class="section article-layout">
+      <aside class="article-toc" aria-label="Table of contents">
+        <p class="eyebrow">Contents</p>
+        <nav>
+          {
+            headings
+              .filter((heading) => heading.depth === 2)
+              .map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)
+          }
+        </nav>
+      </aside>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

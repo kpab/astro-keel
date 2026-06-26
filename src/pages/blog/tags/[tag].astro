@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', ({ data }) => !data.draft);
+  const allTags = [...new Set(entries.flatMap((entry) => entry.data.tags))];
+  return allTags.map((tag) => ({ params: { tag }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+const taggedPosts = posts
+  .filter((post) => post.data.tags.includes(tag))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const otherTags = tags.filter((item) => item !== tag).sort((a, b) => a.localeCompare(b));
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+---
+
+<BaseLayout title={`${tag} posts | Astro Keel`} description={`Blog posts tagged ${tag}.`}>
+  <section class="page-head section">
+    <p class="eyebrow">Tag</p>
+    <h1>{tag}</h1>
+    <p class="lead">Notes collected under the {tag} tag.</p>
+  </section>
+
+  <section class="section content-index" aria-label={`${tag} posts`}>
+    <div class="index-sidebar">
+      <p class="eyebrow">More tags</p>
+      <nav class="tag-cloud" aria-label="Other blog tags">
+        <a href="/blog/">All posts</a>
+        {otherTags.map((item) => <a href={`/blog/tags/${item}/`}>{item}</a>)}
+      </nav>
+    </div>
+
+    <div class="entry-list">
+      {
+        taggedPosts.map((post) => (
+          <article class="entry-card">
+            <div class="entry-meta">
+              <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+              <span>{post.data.tags.join(' / ')}</span>
+            </div>
+            <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+            <p>{post.data.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
