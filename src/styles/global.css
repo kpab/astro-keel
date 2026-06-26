@@ -213,10 +213,10 @@ a:not(.brand, .button):hover {
 .hero::before {
   content: "";
   position: absolute;
-  top: clamp(2rem, 5vw, 4rem);
+  top: clamp(1.5rem, 3vw, 2.5rem);
   left: 0;
   width: 1px;
-  height: clamp(5rem, 12vw, 9rem);
+  height: clamp(3.5rem, 8vw, 6rem);
   background: var(--color-accent);
 }
 
