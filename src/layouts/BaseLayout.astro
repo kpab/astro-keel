@@ -30,7 +30,7 @@ const {
 // request URL during dev so canonical/OG links still resolve.
 const siteBase = Astro.site ?? new URL(Astro.url.origin);
 const canonicalURL = new URL(Astro.url.pathname, siteBase);
-const imageURL = image ? new URL(image, siteBase) : undefined;
+const imageURL = image ? new URL(image, siteBase) : new URL(withBase('/og.jpg'), siteBase);
 const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 
 const navItems = [
