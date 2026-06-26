@@ -4,6 +4,8 @@ A minimal, neutral, and modern portfolio and blog theme for Astro. Astro Keel pa
 
 > **Keel** — the structural backbone of a ship. The name reflects the design intent: stripped of ornament, all structure and spine.
 
+**[Live demo →](https://kpab.github.io/astro-keel/)**
+
 ## Features
 
 - **Portfolio + blog** — dedicated `works` and `blog` content collections with individual pages.
@@ -15,7 +17,7 @@ A minimal, neutral, and modern portfolio and blog theme for Astro. Astro Keel pa
 - **Syntax highlighting** — Shiki dual themes (light/dark) wired to the active color scheme.
 - **SEO-ready** — canonical URLs, Open Graph, Twitter cards, and a sitemap out of the box.
 - **Responsive & accessible** — fluid type, hairline structure, visible focus rings.
-- **Host-agnostic** — static output; deploys to Cloudflare Pages, Vercel, Netlify, or any static host.
+- **One-click deploy** — bundled GitHub Pages workflow; or ship the static `dist/` to Cloudflare Pages, Vercel, Netlify, or any static host.
 
 ## Tech stack
 
@@ -40,6 +42,19 @@ export default defineConfig({
   // ...
 });
 ```
+
+### Base path
+
+Internal links and assets are routed through a `withBase()` helper (`src/lib/url.ts`), so the theme works whether it's served from a domain root or a subpath. Serving from a subpath — like a GitHub Pages **project site** at `https://<user>.github.io/<repo>/` — just needs `site` + `base`:
+
+```js
+export default defineConfig({
+  site: 'https://<user>.github.io',
+  base: '/<repo>',
+});
+```
+
+For a custom domain or a `<user>.github.io` **root site**, omit `base` (or set it to `'/'`).
 
 ## Customization
 
@@ -107,6 +122,20 @@ src/
   styles/            # global.css design tokens
 astro.config.mjs     # site URL, integrations, Shiki config
 ```
+
+## Deployment
+
+### GitHub Pages
+
+A workflow at `.github/workflows/deploy.yml` builds the site and publishes it on every push to `main`.
+
+1. Set `site` and `base` in `astro.config.mjs` to match your repository (see [Base path](#base-path)).
+2. In the repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Push to `main` (or run the workflow manually from the **Actions** tab). Your site goes live at `https://<user>.github.io/<repo>/`.
+
+### Other static hosts
+
+`npm run build` emits a static `dist/` that deploys as-is to Cloudflare Pages, Vercel, Netlify, or any static host. Drop `base` from `astro.config.mjs` when serving from a domain root.
 
 ## License
 
