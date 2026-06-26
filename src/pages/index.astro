@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Astro Keel"
+  description="A minimal portfolio and writing theme for careful technical work."
+>
+  <section class="hero section">
+    <p class="eyebrow">Portfolio / writing / systems notes</p>
+    <h1>A quiet Astro theme for work that needs room to breathe.</h1>
+    <p class="lead">
+      Astro Keel gives projects, essays, and professional notes a restrained structure:
+      crisp type, durable spacing, and one accent color that can be changed from a single
+      CSS variable.
+    </p>
+    <div class="action-row" aria-label="Primary links">
+      <a class="button" href="/works/">View works</a>
+      <a class="text-link" href="/blog/">Read notes</a>
+    </div>
+  </section>
+
+  <section class="section split-overview" aria-label="Theme overview">
+    <div>
+      <p class="eyebrow">Principles</p>
+      <h2>Readable first, decorative last.</h2>
+    </div>
+    <div class="feature-list">
+      <article>
+        <h3>Neutral palette</h3>
+        <p>Light and dark modes share the same measured contrast system.</p>
+      </article>
+      <article>
+        <h3>Content ready</h3>
+        <p>Typed collections are prepared for project case studies and posts.</p>
+      </article>
+      <article>
+        <h3>Small surface</h3>
+        <p>Layouts stay simple enough to adapt without fighting a component maze.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
