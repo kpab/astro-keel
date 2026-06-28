@@ -790,8 +790,15 @@ pre code {
     grid-template-columns: 1fr auto;
   }
 
+  .theme-toggle {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
   .site-nav {
     grid-column: 1 / -1;
+    grid-row: 2;
     justify-content: flex-start;
     overflow-x: auto;
   }
