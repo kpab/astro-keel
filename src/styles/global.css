@@ -241,7 +241,7 @@ a:not(.brand, .button):hover {
 }
 
 .section {
-  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  padding-block: clamp(3.5rem, 5.5vw, 5.5rem);
 }
 
 .page-head {
@@ -734,6 +734,15 @@ pre code {
 
 .about-ledger p {
   color: var(--color-muted);
+}
+
+/* About: tighten the rhythm between the profile intro and the experience ledger */
+.prose-grid:has(+ .section .about-ledger) {
+  padding-block-end: clamp(2rem, 4vw, 3.5rem);
+}
+
+.section:has(.about-ledger) {
+  padding-block-start: clamp(2rem, 4vw, 3.5rem);
 }
 
 .about-closing {
