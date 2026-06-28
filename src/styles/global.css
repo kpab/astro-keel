@@ -131,11 +131,15 @@ a:not(.brand, .button):hover {
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1rem;
   padding-block: calc(var(--baseline) * 0.85);
+  background: var(--color-bg);
   border-bottom: var(--hairline);
 }
 
