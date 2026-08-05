@@ -23,14 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+      - name: Read Node version
+        id: nvmrc
+        # withastro/action takes a version string, not a version file, so read
+        # .nvmrc here instead of hardcoding the version a second time.
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
       - name: Build with Astro
-        uses: withastro/action@v3
+        uses: withastro/action@v6
         # withastro/action installs deps, runs the build, and uploads ./dist
         # as the Pages artifact. `site`/`base` come from astro.config.mjs.
         with:
-          # Astro 7 requires Node >=22.12.0; the action defaults to Node 20.
-          node-version: 22
+          node-version: ${{ steps.nvmrc.outputs.version }}
 
   deploy:
     needs: build
@@ -41,4 +45,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
