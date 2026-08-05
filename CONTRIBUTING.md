@@ -35,6 +35,7 @@ Pages demo. Leave it as-is in PRs; downstream users drop it for a root domain.
 Before pushing:
 
 ```sh
+npm run format   # Prettier — CI rejects unformatted code
 npm run check    # astro check — must report 0 errors
 npm run build    # must succeed; also runs `pagefind` via postbuild
 ```
@@ -42,6 +43,21 @@ npm run build    # must succeed; also runs `pagefind` via postbuild
 `npm run check` currently emits four hints: two Zod deprecations from Astro's
 content schema API, and two unused-`Props` hints in the paginated routes. Those
 are pre-existing — new _errors_ are not acceptable, new hints should be avoided.
+
+## Formatting
+
+Prettier owns formatting, with `prettier-plugin-astro` for `.astro` files.
+`npm run format:check` runs in CI, so an unformatted PR fails before the build.
+Don't hand-tune style — run `npm run format` and let the config decide.
+
+Settings live in `.prettierrc`: single quotes and 100-column lines, chosen to
+match the code as it was already written. `.editorconfig` covers charset, line
+endings, and indentation for editors that don't run Prettier.
+
+Two paths are exempt in `.prettierignore`: `CHANGELOG.md`, whose entries are
+hand-wrapped, and `src/components/Comments.astro`, which the Astro plugin cannot
+parse — its `<style>` is wrapped in a JSX expression, the only way to scope CSS
+inside `{enabled && …}`. Keep that file tidy by hand.
 
 ## Project structure
 
