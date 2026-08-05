@@ -1,0 +1,12 @@
+dist/
+node_modules/
+package-lock.json
+
+# Release notes are hand-formatted; reflowing them churns every entry.
+CHANGELOG.md
+
+# prettier-plugin-astro cannot parse a <style> whose children are a JSX
+# expression, which is the only way to write scoped CSS inside `{enabled && …}`.
+# Rewriting it as `set:html` would move the CSS out of the markup just to satisfy
+# the formatter — drop this line once the plugin handles the construct.
+src/components/Comments.astro

@@ -11,6 +11,8 @@
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "astro": "astro"
   },
   "dependencies": {
@@ -28,6 +30,8 @@
     "@astrojs/check": "^0.9.9",
     "@fontsource/fraunces": "^5.2.9",
     "pagefind": "^1.5.2",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
     "satori": "^0.26.0",
     "sharp": "^0.35.3",
     "typescript": "^6.0.3"
