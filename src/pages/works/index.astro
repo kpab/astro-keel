@@ -13,7 +13,10 @@ const works = (await getCollection('works')).sort((a, b) => {
 });
 ---
 
-<BaseLayout title={t('works.title')} description={`Selected projects and case studies — ${SITE.title}.`}>
+<BaseLayout
+  title={t('works.title')}
+  description={`Selected projects and case studies — ${SITE.title}.`}
+>
   <section class="page-head section">
     <p class="eyebrow">{t('works.eyebrow')}</p>
     <h1>Selected projects and case studies.</h1>
@@ -29,7 +32,9 @@ const works = (await getCollection('works')).sort((a, b) => {
         works.map((work) => (
           <article class="work-card">
             <p class="entry-meta">{work.data.tech.join(' / ')}</p>
-            <h2><a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a></h2>
+            <h2>
+              <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
+            </h2>
             <p>{work.data.description}</p>
           </article>
         ))

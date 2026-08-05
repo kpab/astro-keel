@@ -11,8 +11,7 @@ const { page } = Astro.props;
 // `paginate()` already prepends the configured `base`; just normalise the
 // trailing slash so links match the rest of the site and skip the
 // GitHub Pages directory redirect.
-const withSlash = (url: string | undefined) =>
-  url && (url.endsWith('/') ? url : `${url}/`);
+const withSlash = (url: string | undefined) => url && (url.endsWith('/') ? url : `${url}/`);
 
 const prev = withSlash(page.url.prev);
 const next = withSlash(page.url.next);
@@ -21,11 +20,23 @@ const next = withSlash(page.url.next);
 {
   page.lastPage > 1 && (
     <nav class="pagination" aria-label={t('pagination.label')}>
-      {prev ? <a href={prev} rel="prev">{t('pagination.newer')}</a> : <span aria-hidden="true" />}
+      {prev ? (
+        <a href={prev} rel="prev">
+          {t('pagination.newer')}
+        </a>
+      ) : (
+        <span aria-hidden="true" />
+      )}
       <span class="pagination-status">
         {t('pagination.status', { current: page.currentPage, total: page.lastPage })}
       </span>
-      {next ? <a href={next} rel="next">{t('pagination.older')}</a> : <span aria-hidden="true" />}
+      {next ? (
+        <a href={next} rel="next">
+          {t('pagination.older')}
+        </a>
+      ) : (
+        <span aria-hidden="true" />
+      )}
     </nav>
   )
 }

@@ -22,12 +22,7 @@ interface Props {
 
 const siteName = SITE.title;
 
-const {
-  title = siteName,
-  description = SITE.description,
-  ogType = 'website',
-  image,
-} = Astro.props;
+const { title = siteName, description = SITE.description, ogType = 'website', image } = Astro.props;
 
 // `Astro.site` comes from `site` in astro.config.mjs; fall back to the
 // request URL during dev so canonical/OG links still resolve.

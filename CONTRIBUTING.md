@@ -41,7 +41,7 @@ npm run build    # must succeed; also runs `pagefind` via postbuild
 
 `npm run check` currently emits four hints: two Zod deprecations from Astro's
 content schema API, and two unused-`Props` hints in the paginated routes. Those
-are pre-existing — new *errors* are not acceptable, new hints should be avoided.
+are pre-existing — new _errors_ are not acceptable, new hints should be avoided.
 
 ## Project structure
 

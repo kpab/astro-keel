@@ -1,13 +1,13 @@
 ---
-title: "Keel Portfolio System"
-description: "A lean portfolio structure for project studies, writing, and durable personal documentation."
+title: 'Keel Portfolio System'
+description: 'A lean portfolio structure for project studies, writing, and durable personal documentation.'
 thumbnail: ./keel-portfolio.jpg
 tech:
   - Astro
   - Content Collections
   - CSS Variables
-link: "https://example.com"
-repo: "https://github.com/example/keel-portfolio"
+link: 'https://example.com'
+repo: 'https://github.com/example/keel-portfolio'
 order: 1
 publishDate: 2026-01-22
 ---

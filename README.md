@@ -76,13 +76,13 @@ A calm neutral base, a single configurable accent color, generous whitespace, an
 Every page of the demo scores **100 across all four categories** — with search,
 pagination, and generated OG images all switched on.
 
-| Page | Performance | Accessibility | Best Practices | SEO |
-| --- | :---: | :---: | :---: | :---: |
-| Home `/` | 100 | 100 | 100 | 100 |
-| Blog index `/blog/` | 100 | 100 | 100 | 100 |
-| Blog post `/blog/baseline-rhythm/` | 100 | 100 | 100 | 100 |
-| Works `/works/` | 100 | 100 | 100 | 100 |
-| Search `/search/` | 100 | 100 | 100 | 100 |
+| Page                               | Performance | Accessibility | Best Practices | SEO |
+| ---------------------------------- | :---------: | :-----------: | :------------: | :-: |
+| Home `/`                           |     100     |      100      |      100       | 100 |
+| Blog index `/blog/`                |     100     |      100      |      100       | 100 |
+| Blog post `/blog/baseline-rhythm/` |     100     |      100      |      100       | 100 |
+| Works `/works/`                    |     100     |      100      |      100       | 100 |
+| Search `/search/`                  |     100     |      100      |      100       | 100 |
 
 <sub>Lighthouse 13.4.1, desktop preset, local production build. Reproduce it yourself:</sub>
 
@@ -229,10 +229,10 @@ To turn it on:
 export const GISCUS: GiscusConfig = {
   enabled: true,
   repo: '<user>/<repo>',
-  repoId: 'R_...',        // from giscus.app
+  repoId: 'R_...', // from giscus.app
   category: 'Announcements',
-  categoryId: 'DIC_...',  // from giscus.app
-  mapping: 'pathname',    // survives retitling, unlike 'title'
+  categoryId: 'DIC_...', // from giscus.app
+  mapping: 'pathname', // survives retitling, unlike 'title'
   // ...
 };
 ```
@@ -301,11 +301,11 @@ Add Markdown/MDX files under `src/content/`:
 ---
 title: Project name
 description: One-line summary.
-tech: ["Astro", "TypeScript"]
-link: https://example.com        # optional — live link
-repo: https://github.com/...     # optional — source
-thumbnail: ./cover.png           # optional — relative image
-order: 1                         # optional — manual sort
+tech: ['Astro', 'TypeScript']
+link: https://example.com # optional — live link
+repo: https://github.com/... # optional — source
+thumbnail: ./cover.png # optional — relative image
+order: 1 # optional — manual sort
 publishDate: 2026-06-01
 ---
 ```
@@ -317,9 +317,9 @@ publishDate: 2026-06-01
 title: Post title
 publishDate: 2026-06-01
 description: One-line summary for listings, SEO, and RSS.
-tags: ["design", "astro"]
-draft: false                     # true hides it from build output
-heroImage: ./hero.png            # optional — relative image
+tags: ['design', 'astro']
+draft: false # true hides it from build output
+heroImage: ./hero.png # optional — relative image
 ---
 ```
 

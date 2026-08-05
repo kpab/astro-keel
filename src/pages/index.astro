@@ -35,9 +35,8 @@ const websiteSchema = {
     <p class="eyebrow">Portfolio / writing / systems notes</p>
     <h1>Structural minimalism for careful digital work.</h1>
     <p class="lead">
-      Astro Keel gives projects, essays, and professional notes a disciplined frame:
-      editorial type, measured rhythm, and a single accent carried through fine structural
-      rules.
+      Astro Keel gives projects, essays, and professional notes a disciplined frame: editorial type,
+      measured rhythm, and a single accent carried through fine structural rules.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       <a class="button" href={withBase('/works/')}>{t('home.viewWorks')}</a>
@@ -79,13 +78,7 @@ const websiteSchema = {
           {works.map((work) => (
             <article class="highlight-card">
               {work.data.thumbnail && (
-                <Image
-                  src={work.data.thumbnail}
-                  alt=""
-                  width={720}
-                  height={480}
-                  loading="lazy"
-                />
+                <Image src={work.data.thumbnail} alt="" width={720} height={480} loading="lazy" />
               )}
               <div>
                 <p class="meta">{formatDate(work.data.publishDate, 'short')}</p>
@@ -125,13 +118,7 @@ const websiteSchema = {
           {posts.map((post) => (
             <article class="note-row">
               {post.data.heroImage && (
-                <Image
-                  src={post.data.heroImage}
-                  alt=""
-                  width={320}
-                  height={220}
-                  loading="lazy"
-                />
+                <Image src={post.data.heroImage} alt="" width={320} height={220} loading="lazy" />
               )}
               <div>
                 <p class="meta">{formatDate(post.data.publishDate, 'short')}</p>

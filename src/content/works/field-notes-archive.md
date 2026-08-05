@@ -1,6 +1,6 @@
 ---
-title: "Field Notes Archive"
-description: "A searchable writing archive organized around tags, dates, and compact editorial summaries."
+title: 'Field Notes Archive'
+description: 'A searchable writing archive organized around tags, dates, and compact editorial summaries.'
 thumbnail: ./field-notes-archive.jpg
 tech:
   - Astro

@@ -62,11 +62,15 @@ const pageTitle =
           taggedPosts.map((post) => (
             <article class="entry-card">
               <div class="entry-meta">
-                <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate, 'short')}</time>
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {formatDate(post.data.publishDate, 'short')}
+                </time>
                 <span>{readingTimes.get(post.id)}</span>
                 <span>{post.data.tags.join(' / ')}</span>
               </div>
-              <h2><a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a></h2>
+              <h2>
+                <a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a>
+              </h2>
               <p>{post.data.description}</p>
             </article>
           ))

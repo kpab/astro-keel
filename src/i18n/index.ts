@@ -52,7 +52,9 @@ export const t = (key: UIKey, params?: Record<string, string | number>): string 
  * rebuilt, instead of showing either kind of garbage.
  */
 export const readingTime = (minutesRead: unknown): string =>
-  typeof minutesRead === 'number' ? t('post.readingTime', { minutes: minutesRead }) : String(minutesRead ?? '');
+  typeof minutesRead === 'number'
+    ? t('post.readingTime', { minutes: minutesRead })
+    : String(minutesRead ?? '');
 
 /** Format a publish date in the active locale. `long` spells the month out;
  *  `short` abbreviates it. Both are locale-aware, including field order. */

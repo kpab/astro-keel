@@ -1,10 +1,10 @@
 ---
-title: "A Small Release Checklist"
+title: 'A Small Release Checklist'
 publishDate: 2026-03-18
 tags:
   - process
   - release
-description: "A compact checklist for shipping a portfolio update without drama."
+description: 'A compact checklist for shipping a portfolio update without drama.'
 draft: false
 ---
 

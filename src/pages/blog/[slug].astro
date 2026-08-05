@@ -64,7 +64,12 @@ const schema = [
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: t('post.breadcrumbHome'), item: absolute('/') },
-      { '@type': 'ListItem', position: 2, name: t('post.breadcrumbBlog'), item: absolute('/blog/') },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('post.breadcrumbBlog'),
+        item: absolute('/blog/'),
+      },
       { '@type': 'ListItem', position: 3, name: entry.data.title },
     ],
   },
@@ -84,7 +89,9 @@ const schema = [
       <h1>{entry.data.title}</h1>
       <p class="lead">{entry.data.description}</p>
       <div class="entry-meta">
-        <time datetime={entry.data.publishDate.toISOString()}>{formatDate(entry.data.publishDate)}</time>
+        <time datetime={entry.data.publishDate.toISOString()}
+          >{formatDate(entry.data.publishDate)}</time
+        >
         <span>{readingTime(remarkPluginFrontmatter.minutesRead)}</span>
         <span>{entry.data.tags.join(' / ')}</span>
       </div>

@@ -13,9 +13,9 @@
   --color-line: oklch(0.86 0.008 100);
   --color-line-strong: oklch(0.72 0.012 120);
   --color-soft: oklch(0.94 0.006 100);
-  --font-display: "Fraunces Variable", Georgia, serif;
-  --font-body: "Public Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Public Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
   --content-width: 1160px;
   --prose-width: 68ch;
   --page-pad: clamp(1rem, 3vw, 2rem);
@@ -223,7 +223,7 @@ a:not(.brand, .button):hover {
 }
 
 .hero::before {
-  content: "";
+  content: '';
   position: absolute;
   top: clamp(1.5rem, 3vw, 2.5rem);
   left: 0;
@@ -259,7 +259,7 @@ a:not(.brand, .button):hover {
 
 .page-head::after,
 .split-overview > div:first-child::after {
-  content: "";
+  content: '';
   display: block;
   width: 4.5rem;
   height: 1px;
@@ -281,7 +281,7 @@ a:not(.brand, .button):hover {
 }
 
 .eyebrow::before {
-  content: "";
+  content: '';
   width: 2.25rem;
   height: 1px;
   background: currentColor;
@@ -301,7 +301,10 @@ h2,
 h3 {
   max-width: 12.5ch;
   font-family: var(--font-display);
-  font-variation-settings: "opsz" 72, "SOFT" 20, "WONK" 1;
+  font-variation-settings:
+    'opsz' 72,
+    'SOFT' 20,
+    'WONK' 1;
   font-weight: 650;
   letter-spacing: 0;
 }
@@ -390,7 +393,7 @@ p {
 }
 
 .feature-list article::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: clamp(1.5rem, 3vw, 2.25rem);
@@ -892,7 +895,7 @@ pre code {
 }
 
 .about-ledger article::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: clamp(1.5rem, 3vw, 2.25rem);

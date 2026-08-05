@@ -35,13 +35,16 @@ const pageTitle =
   page.currentPage === 1 ? t('blog.title') : t('blog.titlePaged', { page: page.currentPage });
 ---
 
-<BaseLayout title={pageTitle} description={`Notes and writing — ${SITE.title}, a minimal portfolio and blog theme for Astro.`}>
+<BaseLayout
+  title={pageTitle}
+  description={`Notes and writing — ${SITE.title}, a minimal portfolio and blog theme for Astro.`}
+>
   <section class="page-head section">
     <p class="eyebrow">{t('blog.eyebrow')}</p>
     <h1>Notes, essays, and release logs.</h1>
     <p class="lead">
-      The blog collection supports tags, descriptions, draft filtering, publish dates,
-      and optional hero images.
+      The blog collection supports tags, descriptions, draft filtering, publish dates, and optional
+      hero images.
     </p>
   </section>
 
@@ -59,11 +62,15 @@ const pageTitle =
           posts.map((post) => (
             <article class="entry-card">
               <div class="entry-meta">
-                <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate, 'short')}</time>
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {formatDate(post.data.publishDate, 'short')}
+                </time>
                 <span>{readingTimes.get(post.id)}</span>
                 <span>{post.data.tags.join(' / ')}</span>
               </div>
-              <h2><a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a></h2>
+              <h2>
+                <a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a>
+              </h2>
               <p>{post.data.description}</p>
             </article>
           ))
