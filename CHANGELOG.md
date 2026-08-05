@@ -11,6 +11,22 @@ written with that in mind — each one names the files it touches.
 
 ## [Unreleased]
 
+### Added
+
+- **Prettier** with `prettier-plugin-astro` (`.prettierrc`, `.prettierignore`),
+  plus `npm run format` / `npm run format:check` and a formatting gate in CI.
+  Settings match the existing code — single quotes, 100-column lines — so
+  porting this into your own copy reflows rather than rewrites it.
+  `src/components/Comments.astro` is excluded: the plugin cannot parse its
+  expression-wrapped `<style>`.
+- **`.editorconfig`** covering charset, line endings, and indentation for
+  editors that do not run Prettier.
+
+### Changed
+
+- The tree is now Prettier-formatted. No behaviour changed — the diff is quote
+  style, wrapping, and Markdown emphasis syntax.
+
 ## [0.2.0] - 2026-08-03
 
 ### Added
