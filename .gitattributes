@@ -1,0 +1,10 @@
+# Prettier normalises to LF, so the checked-out tree has to be LF everywhere.
+# Without this, a Windows clone (Git for Windows defaults to core.autocrlf=true)
+# converts on checkout and `npm run format:check` fails on every file — a
+# failure CI never reproduces, because CI runs on Linux.
+* text=auto eol=lf
+
+# Assets: never normalise, never diff as text.
+*.png binary
+*.jpg binary
+*.ico binary
