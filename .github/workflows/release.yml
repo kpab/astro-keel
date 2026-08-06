@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 # Scoped to this workflow only — ci.yml and deploy.yml stay read-only.
 permissions:
