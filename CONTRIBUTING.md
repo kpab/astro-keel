@@ -114,12 +114,10 @@ Maintainers only.
    git push origin main --tags
    ```
 
-4. Publish the GitHub Release, using that changelog section as the body — paste
-   it in and close with `Ctrl-D`:
-
-   ```sh
-   gh release create vx.y.z --title "vx.y.z" --notes-file -
-   ```
+   Pushing the tag triggers `.github/workflows/release.yml`, which extracts
+   that version's section from `CHANGELOG.md` and publishes the GitHub
+   Release with it as the body. The workflow fails if the tag has no matching
+   CHANGELOG section — that's the guard against tagging before writing notes.
 
 The Lighthouse table in the README is a hand-recorded snapshot, not a live
 badge — re-run it before cutting a release so a regression can't sit behind a

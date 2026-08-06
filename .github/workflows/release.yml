@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+# Scoped to this workflow only — ci.yml and deploy.yml stay read-only.
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Extract CHANGELOG section
+        # Keep a Changelog headings look like "## [0.2.0] - 2026-08-03". Pull
+        # everything between the heading matching this tag's version and the
+        # next "## [" heading (or EOF), and fail loudly if that section is
+        # missing or empty — the guard against tagging before writing notes.
+        run: |
+          set -uo pipefail
+          version="${GITHUB_REF_NAME#v}"
+
+          if ! awk -v ver="$version" '
+            BEGIN { gsub(/\./, "\\.", ver); found = 0; printing = 0 }
+            /^## \[/ {
+              if (printing) exit
+              if ($0 ~ "^## \\[" ver "\\]") { found = 1; printing = 1 }
+              next
+            }
+            # Stop before the link reference definitions at the bottom of the
+            # file — otherwise the oldest section in CHANGELOG.md would run
+            # past its own content into "[0.1.0]: https://...".
+            printing && /^\[[^]]+\]:/ { exit }
+            printing { print }
+            END { exit !found }
+          ' CHANGELOG.md > release-notes.md; then
+            echo "::error::No CHANGELOG.md section found for version $version (tag $GITHUB_REF_NAME)"
+            exit 1
+          fi
+
+          if [ ! -s release-notes.md ]; then
+            echo "::error::CHANGELOG.md section for version $version is empty (tag $GITHUB_REF_NAME)"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: ${{ github.ref_name }}
+          body_path: release-notes.md
