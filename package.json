@@ -15,21 +15,21 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.2",
-    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/mdx": "^7.0.5",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
-    "@fontsource-variable/fraunces": "^5.2.9",
-    "@fontsource-variable/jetbrains-mono": "^5.2.8",
-    "@fontsource/public-sans": "^5.2.7",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/public-sans": "^5.3.0",
     "astro": "^7.0.3",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@fontsource/fraunces": "^5.2.9",
+    "@astrojs/check": "^0.9.10",
+    "@fontsource/fraunces": "^5.3.0",
     "pagefind": "^1.5.2",
-    "satori": "^0.26.0",
+    "satori": "^0.29.0",
     "sharp": "^0.35.3",
     "typescript": "^6.0.3"
   }
