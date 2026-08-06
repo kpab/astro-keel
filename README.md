@@ -297,29 +297,31 @@ Add Markdown/MDX files under `src/content/`:
 
 ### Works frontmatter
 
+<!-- prettier-ignore -->
 ```yaml
 ---
 title: Project name
 description: One-line summary.
 tech: ['Astro', 'TypeScript']
-link: https://example.com # optional — live link
-repo: https://github.com/... # optional — source
-thumbnail: ./cover.png # optional — relative image
-order: 1 # optional — manual sort
+link: https://example.com        # optional — live link
+repo: https://github.com/...     # optional — source
+thumbnail: ./cover.png           # optional — relative image
+order: 1                         # optional — manual sort
 publishDate: 2026-06-01
 ---
 ```
 
 ### Blog frontmatter
 
+<!-- prettier-ignore -->
 ```yaml
 ---
 title: Post title
 publishDate: 2026-06-01
 description: One-line summary for listings, SEO, and RSS.
 tags: ['design', 'astro']
-draft: false # true hides it from build output
-heroImage: ./hero.png # optional — relative image
+draft: false                     # true hides it from build output
+heroImage: ./hero.png            # optional — relative image
 ---
 ```
 
