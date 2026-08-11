@@ -21,6 +21,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# lychee's link-check cache, written when the workflow's command is run locally
+.lycheecache
+
 # editor / agent local state
 .codex/
 .claude/
