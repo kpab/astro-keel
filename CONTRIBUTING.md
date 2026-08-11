@@ -59,6 +59,23 @@ hand-wrapped, and `src/components/Comments.astro`, which the Astro plugin cannot
 parse — its `<style>` is wrapped in a JSX expression, the only way to scope CSS
 inside `{enabled && …}`. Keep that file tidy by hand.
 
+`src/content/` is formatted too. Prose is left alone — `proseWrap` stays at the
+default `preserve`, so paragraphs are never rewrapped — but frontmatter quoting
+is normalised and fenced code blocks are reformatted. When a code block has to
+stay verbatim, for instance because the post is about the broken formatting,
+mark it:
+
+````md
+<!-- prettier-ignore -->
+```js
+const   x=1
+```
+````
+
+Downstream users who would rather keep their own posts out of the gate can add
+`src/content/` to `.prettierignore` — the demo content in this repo stays under
+it because it ships as part of the theme.
+
 ## Project structure
 
 ```
