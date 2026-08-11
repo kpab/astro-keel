@@ -25,6 +25,11 @@ written with that in mind — each one names the files it touches.
   that version's section from `CHANGELOG.md` and publishes it as the GitHub
   Release body automatically, replacing the manual `gh release create` step.
   The workflow fails loudly if the tag has no matching CHANGELOG section.
+- **`.github/workflows/links.yml`** — a weekly `lychee` run over every
+  Markdown and MDX file, reporting dead external links in a single tracking
+  issue that later runs update and close. It never runs on pull requests, so
+  an external site being down can't block a merge. Placeholder and
+  dev-server URLs are listed in `.lycheeignore`.
 
 ### Changed
 

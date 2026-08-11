@@ -1,0 +1,75 @@
+name: Links
+
+on:
+  # Weekly — external links rot on their own schedule, not on ours.
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+# Deliberately not on `pull_request`: a link check depends on other people's
+# servers being up, and a flaky host must never block a merge. Failures land in
+# a tracking issue instead.
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: links
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Report rather than fail, so the issue steps below always run.
+          fail: false
+          jobSummary: true
+          # Links inside code fences are skipped by default (no
+          # `--include-verbatim`) — the docs are full of illustrative URLs.
+          args: >-
+            --no-progress
+            --cache
+            --max-cache-age 1d
+            --exclude-path node_modules
+            --exclude-path dist
+            '**/*.md'
+            '**/*.mdx'
+
+      - name: Look for an open report issue
+        id: report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # One tracking issue at a time: a weekly run that finds the same dead
+        # link should edit last week's report, not stack another issue on it.
+        run: |
+          set -euo pipefail
+          number=$(gh issue list --state open --label link-check --limit 1 --json number --jq '.[0].number // empty')
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the report issue
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: Dead links found
+          content-filepath: ./lychee/out.md
+          # Empty when nothing is open, which makes this a fresh issue.
+          issue-number: ${{ steps.report.outputs.number }}
+          labels: link-check
+
+      - name: Close the report issue once links are healthy
+        if: steps.lychee.outputs.exit_code == 0 && steps.report.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ steps.report.outputs.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          gh issue close "$NUMBER" --comment "Every link resolves again as of $RUN_URL."

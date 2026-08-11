@@ -1,0 +1,19 @@
+# Patterns (regex) for links the weekly check in .github/workflows/links.yml
+# must not try to resolve.
+
+# The dev server, which only exists on a contributor's machine.
+^http://localhost
+
+# Placeholders in setup instructions and demo content. They stand in for the
+# reader's own values and are never meant to resolve.
+^https://example\.com
+^https://your-domain\.com
+^https://<user
+^https://github\.com/<user
+^https://github\.com/\.\.\.
+^https://github\.com/example/
+
+# GitHub serves the stargazers page to browsers only — an unauthenticated bot
+# request 404s even for repositories that have stars. The README badge links
+# there and the link is fine.
+^https://github\.com/[^/]+/[^/]+/stargazers
