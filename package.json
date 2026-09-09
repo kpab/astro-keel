@@ -16,14 +16,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/markdown-remark": "^7.3.0",
     "@astrojs/mdx": "^7.0.8",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource/public-sans": "^5.3.0",
-    "astro": "^7.2.9",
+    "astro": "^7.3.1",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
   },
