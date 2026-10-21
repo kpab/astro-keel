@@ -16,14 +16,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.2",
-    "@astrojs/mdx": "^8.0.3",
+    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/mdx": "^8.1.0",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource/public-sans": "^5.3.0",
-    "astro": "^7.3.8",
+    "astro": "^7.4.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
   },
@@ -33,7 +33,7 @@
     "pagefind": "^1.5.2",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^0.14.1",
-    "satori": "^0.47.1",
+    "satori": "^0.62.0",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   }
